@@ -83,21 +83,19 @@ function createElements(outputStory) {
   const madEdit = document.querySelector(".madLibsEdit"); //select the element with class (madLibsEdit)
   const madPrev = document.querySelector(".madLibsPreview"); //select the element with class (madLibsPreview)
 
-  outputStory.map((story) => { //looping over the array of objects that we return in line 57
-    if ("pos" in story === false) { //checking if each object has "pos" key
-      //madEdit.textContent = madEdit.textContent + `${story.word} `;
-      //madPrev.textContent = madEdit.textContent + `${story.word} `;
+  outputStory.map((story) => {
+    //looping over the array of objects that we return in line 57
+    if ("pos" in story === false) {
+      //checking if each object has "pos" key
       madEdit.innerHTML = madEdit.innerHTML + `${story.word} `;
       madPrev.innerHTML = madEdit.innerHTML + `${story.word} `;
-    } else if ("pos" in story === true) { //checking if each object has "pos" key
-      //for (let i = 0; i < outputStory.length; i++) {
-       // const newElEdit = document.createElement("input");
-        //madEdit.appendChild(newElEdit);
-        //const newElPrev = document.createElement("input");
-        //madPrev.appendChild(newElPrev);
-        madEdit.innerHTML = madEdit.innerHTML + `<input />`;
-      madPrev.innerHTML = madEdit.innerHTML + `<input />`;
-    //}
+    } else if ("pos" in story === true) {
+      //checking if each object has "pos" key
+      madEdit.innerHTML =
+        madEdit.innerHTML +
+        `<input id="${story.word}" placeHolder="${story.word}" />`;
+      madPrev.innerHTML =
+        madEdit.innerHTML + `<input id="${story.pos}" disabled />`; //disable
     }
   });
   return outputStory;
