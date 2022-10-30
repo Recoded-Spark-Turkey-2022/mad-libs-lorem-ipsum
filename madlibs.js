@@ -77,6 +77,7 @@ getRawStory()
   .then((processedStory) => {
     console.log(processedStory);
     createElements(processedStory);
+    liveUpdates();
   });
 
 function createElements(outputStory) {
@@ -95,8 +96,18 @@ function createElements(outputStory) {
         madEdit.innerHTML +
         `<input id="${story.word}" placeHolder="${story.word}" />`;
       madPrev.innerHTML =
-        madEdit.innerHTML + `<input id="${story.pos}" disabled />`; //disable
+        madPrev.innerHTML + `<input id="${story.pos}" />`;
+        //document.querySelectorAll(".madLibsPreview input").disabled = true;
     }
   });
   return outputStory;
+}
+
+function liveUpdates () {
+  const editingSection = document.querySelectorAll(".madLibsEdit input");
+  const previewSection = document.querySelectorAll(".madLibsPreview input");
+  for (let i=0; i<editingSection.length;i++) {
+    previewSection[i].value=editingSection[i].value;
+  editingSection[i].addEventListener("input", liveUpdates);
+  }
 }
