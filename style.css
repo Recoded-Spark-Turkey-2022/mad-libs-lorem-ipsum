@@ -10,9 +10,9 @@
 }
 
 body {
-  background-image: url(images/hocus.jpg);
+  background-image: url(https://media.istockphoto.com/vectors/happy-halloween-purple-violet-background-with-full-moon-dead-tree-and-vector-id1339748320?k=20&m=1339748320&s=612x612&w=0&h=InuV9FmdsrfjO-duEcyDlYmuvREg3y1PiOb1SD00MM4=);
   background-size: 100% auto;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 .headers {
@@ -84,7 +84,7 @@ input:focus {
 
 @media screen and (max-width: 770px) {
   body {
-    background-image: url(images/hocus.jpg);
+    background-image: url(https://media.istockphoto.com/vectors/happy-halloween-purple-violet-background-with-full-moon-dead-tree-and-vector-id1339748320?k=20&m=1339748320&s=612x612&w=0&h=InuV9FmdsrfjO-duEcyDlYmuvREg3y1PiOb1SD00MM4=);
     background-size: 100% auto;
     background-repeat: no-repeat;
   }

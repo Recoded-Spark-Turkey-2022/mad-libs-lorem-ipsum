@@ -28,10 +28,10 @@
  */
 function parseStory(rawStory) {
   const noun = /\[noun\]/; 
+  const city = /\[city\]/;
   const verb = /\[verb\]/; 
   const adj = /\[adjective\]/;
   const name = /\[name\]/; 
-  const city = /\[city\]/;
   const food = /\[food\]/;
   const place = /\[place\]/;
   const item = /\[item\]/;
@@ -61,12 +61,12 @@ function parseStory(rawStory) {
         word: story,
         pos: "name",
       });
-    }else if (city.test(story) === true) {
+    } else if (city.test(story) === true) {
       //checking if the [v] exists in each word in our story
       outputStory.push({
         // push each story to the emtpy array
         word: city,
-        pos: "verb",
+        pos: "city",
       });
     }else if (food.test(story) === true) {
       //checking if the [v] exists in each word in our story
