@@ -1,3 +1,91 @@
 /**
  * Your CSS goes here.
  */
+@import url("https://fonts.googleapis.com/css?family=Akaya Telivigala");
+@import url("https://fonts.googleapis.com/css?family=Acme");
+
+* {
+  box-sizing: border-box;
+  font-size: 0.5;
+}
+
+body {
+  background-image: url(images/hocus.jpg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.headers {
+  font-family: "Akaya Telivigala", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 40px;
+}
+
+.headers h1 {
+  color: purple;
+  margin: 0;
+}
+
+.madLibs {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.madLibsEdit {
+  font-family: "Akaya Telivigala", sans-serif;
+  font-size: 30px;
+  background: white;
+  padding: 2%;
+  margin: 5%;
+  border: 5px solid purple;
+  margin-left: 1%;
+}
+
+.madLibsPreview {
+  font-family: "Akaya Telivigala", sans-serif;
+  font-size: 30px;
+  background: white;
+  padding: 2%;
+  margin: 5%;
+  margin-right: 1%;
+  border: 5px solid purple;
+}
+
+.madLibsEdit input {
+  font-family: "Akaya Telivigala", sans-serif;
+  font-size: 30px;
+  align-items: center;
+  background: rgb(234, 128, 232);
+  border-radius: 5px;
+  border: none;
+  margin: 1%;
+  width: 5em;
+}
+
+.madLibsPreview input {
+  font-family: "Akaya Telivigala", sans-serif;
+  font-size: 30px;
+  width: 5em;
+  background: white;
+  border-radius: 5px;
+  border: none;
+  margin: 1%;
+}
+
+input:focus {
+  width: 5em;
+  outline: none;
+  border: 3px solid #0ca584;
+  /* border: 1px solid rgba(255, 102, 102, 1);*/
+}
+
+@media screen and (max-width: 770px) {
+  body {
+    background-image: url(images/hocus.jpg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+  }
+}

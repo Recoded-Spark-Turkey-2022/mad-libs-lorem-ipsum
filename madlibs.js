@@ -27,9 +27,15 @@
  * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
  */
 function parseStory(rawStory) {
-  const noun = /\[n\]/; // regular Expression for [n]
-  const verb = /\[v\]/; // regular Expression for [v]
-  const adj = /\[a\]/; // regular Expression for [a]
+  const noun = /\[noun\]/; 
+  const verb = /\[verb\]/; 
+  const adj = /\[adjective\]/;
+  const name = /\[name\]/; 
+  const city = /\[city\]/;
+  const food = /\[food\]/;
+  const place = /\[place\]/;
+  const item = /\[item\]/;
+
   const outputStory = []; // new empty erray to push each word of our story
   const ourStory = rawStory.split(" "); //convert the story to array using split()
   ourStory.map((story) => {
@@ -48,6 +54,41 @@ function parseStory(rawStory) {
         word: story,
         pos: "verb",
       });
+    } else if (name.test(story) === true) {
+      //checking if the [v] exists in each word in our story
+      outputStory.push({
+        // push each story to the emtpy array
+        word: story,
+        pos: "name",
+      });
+    }else if (city.test(story) === true) {
+      //checking if the [v] exists in each word in our story
+      outputStory.push({
+        // push each story to the emtpy array
+        word: city,
+        pos: "verb",
+      });
+    }else if (food.test(story) === true) {
+      //checking if the [v] exists in each word in our story
+      outputStory.push({
+        // push each story to the emtpy array
+        word: story,
+        pos: "food",
+      });
+    }else if (place.test(story) === true) {
+      //checking if the [v] exists in each word in our story
+      outputStory.push({
+        // push each story to the emtpy array
+        word: story,
+        pos: "place",
+      });
+    }else if (item.test(story) === true) {
+      //checking if the [v] exists in each word in our story
+      outputStory.push({
+        // push each story to the emtpy array
+        word: story,
+        pos: "item",
+      });
     } else if (adj.test(story) === true) {
       //checking if the [a] exists in each word in our story
       outputStory.push({
@@ -55,7 +96,7 @@ function parseStory(rawStory) {
         word: story,
         pos: "adj",
       });
-    } else {
+    }  else {
       outputStory.push({
         // push each story to the emtpy array
         word: story,
@@ -75,9 +116,10 @@ function parseStory(rawStory) {
 getRawStory()
   .then(parseStory)
   .then((processedStory) => {
-    console.log(processedStory);
+    //console.log(processedStory);
     createElements(processedStory);
     liveUpdates();
+    enterKey();
   });
 
 function createElements(outputStory) {
@@ -89,25 +131,38 @@ function createElements(outputStory) {
     if ("pos" in story === false) {
       //checking if each object has "pos" key
       madEdit.innerHTML = madEdit.innerHTML + `${story.word} `;
-      madPrev.innerHTML = madEdit.innerHTML + `${story.word} `;
+      madPrev.innerHTML = madPrev.innerHTML + `${story.word} `;
     } else if ("pos" in story === true) {
       //checking if each object has "pos" key
       madEdit.innerHTML =
         madEdit.innerHTML +
-        `<input id="${story.word}" placeHolder="${story.word}" />`;
-      madPrev.innerHTML =
-        madPrev.innerHTML + `<input id="${story.pos}" />`;
-        //document.querySelectorAll(".madLibsPreview input").disabled = true;
+        `<input id="${story.word}" maxlength="13" autocomplete="off" placeHolder="${story.pos}" />`;
+      madPrev.innerHTML = madPrev.innerHTML + `<input disabled />`;
+      // document.querySelectorAll(".madLibsPreview input").disabled = true;
     }
   });
   return outputStory;
 }
 
-function liveUpdates () {
+function liveUpdates() {
   const editingSection = document.querySelectorAll(".madLibsEdit input");
   const previewSection = document.querySelectorAll(".madLibsPreview input");
-  for (let i=0; i<editingSection.length;i++) {
-    previewSection[i].value=editingSection[i].value;
-  editingSection[i].addEventListener("input", liveUpdates);
+
+  for (let i = 0; i < editingSection.length; i++) {
+    previewSection[i].value = editingSection[i].value;
+    editingSection[i].addEventListener("input", liveUpdates);
+  }
+}
+
+function enterKey() {
+  const allFields = document.querySelectorAll(".madLibsEdit input");
+
+  for (let i = 0; i < allFields.length; i++) {
+    allFields[i].addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        allFields[i + 1].focus();
+      }
+    });
   }
 }
